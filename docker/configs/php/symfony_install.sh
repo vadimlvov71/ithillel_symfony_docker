@@ -57,8 +57,11 @@ if test -f "${target_path}/symfony.lock"; then
 
     rsync -avh  --remove-source-files --progress $install_path/ $target_path
 
-    echo -e "${On_Green}  Delete tmp dir   ${NC}"
+    echo -e "${On_Green}  Delete tmp dir and install files  ${NC}"
     rm -rf $install_path
+    rm -rf .env.install
+    rm -rf .env.install.dist
+    rm -rf compose.yaml
 
     git add $target_path/*
 
