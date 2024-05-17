@@ -57,18 +57,18 @@ if test -f "${target_path}/symfony.lock"; then
 
     echo -e "${On_Green}  Delete install files  ${NC}"
     echo pwd
-    rm -rf $target_path/.env.install
-    rm -rf $target_path/.env.install.dist
-    rm -rf $target_path/compose.yaml
-    rm -rf $target_path/compose.override.yaml
-
-    git add $target_path/.
 
     echo -e "${On_Green}  Sync files  ${NC}"
     rsync -avh  --remove-source-files --progress $install_path/ $target_path
 
     echo -e "${On_Green}  Delete tmp dir and install files  ${NC}"
-    rm -rf $install_path
+      rm -rf $target_path/.env.install
+      rm -rf $target_path/.env.install.dist
+      rm -rf $target_path/compose.yaml
+      rm -rf $target_path/compose.override.yaml
+
+      git add $target_path/.
+      rm -rf $install_path
 
     echo -e "${On_Green}   Install complete successful   ${NC}"
 #    echo -e "${On_Green}   Run 'docker-compose up' now  ${NC}"
